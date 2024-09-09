@@ -160,6 +160,7 @@ class GraphRAGRetrieverPipeline(BaseFileIndexRetriever):
         }
 
     def _build_graph_search(self):
+        print("File IDs: -----------------------------------------------", self.file_ids)
         assert (
             len(self.file_ids) <= 1
         ), "GraphRAG retriever only supports one file_id at a time"
@@ -231,8 +232,8 @@ class GraphRAGRetrieverPipeline(BaseFileIndexRetriever):
 
         embedding_model = os.getenv("GRAPHRAG_EMBEDDING_MODEL")
         text_embedder = OpenAIEmbedding(
-            api_key=os.getenv("OPENAI_API_KEY"),
-            api_base=None,
+            api_key=os.getenv("GRAPHRAG_EMBEDDING_API_KEY"),
+            api_base=os.getenv("GRAPHRAG_EMBEDDING_API_BASE"),
             api_type=OpenaiApiType.OpenAI,
             model=embedding_model,
             deployment_name=embedding_model,
