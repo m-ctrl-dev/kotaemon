@@ -1,4 +1,5 @@
 import os
+import sys
 import subprocess
 from pathlib import Path
 from shutil import rmtree
@@ -97,7 +98,7 @@ class GraphRAGIndexingPipeline(IndexDocumentPipeline):
     def call_graphrag_index(self, input_path: str):
         # Construct the command
         command = [
-            "python",
+            sys.executable,
             "-m",
             "graphrag.index",
             "--root",

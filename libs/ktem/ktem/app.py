@@ -39,7 +39,8 @@ class BaseApp:
         self.app_name = getattr(settings, "KH_APP_NAME", "Kotaemon")
         self.app_version = getattr(settings, "KH_APP_VERSION", "")
         self.f_user_management = getattr(settings, "KH_FEATURE_USER_MANAGEMENT", False)
-        self._theme = gr.Theme.from_hub("lone17/kotaemon")
+        #self._theme = gr.Theme.from_hub("lone17/kotaemon")
+        self._theme = gr.themes.Monochrome()
 
         dir_assets = Path(__file__).parent / "assets"
         with (dir_assets / "css" / "main.css").open() as fi:
